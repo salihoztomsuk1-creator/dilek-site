@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dilek ❤️</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;overflow:hidden;font-family:Arial,sans-serif;color:#fff;background:radial-gradient(circle at top,#7b1748 0%,transparent 40%),linear-gradient(135deg,#160009,#41051f,#090006)}
+.container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{width:100%;max-width:440px;padding:35px 25px;text-align:center;border-radius:30px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);backdrop-filter:blur(15px);box-shadow:0 20px 70px rgba(0,0,0,.55);animation:show 1.2s ease}
+.heart{font-size:65px;animation:beat 1.2s infinite;margin-bottom:12px}
+h1{font-size:36px;margin-bottom:18px}
+.message{color:#ffe3ed;font-size:17px;line-height:1.65;margin-bottom:25px}
+.question{font-size:25px;font-weight:bold;margin:25px 0}
+.buttons{position:relative;min-height:70px;display:flex;justify-content:center;align-items:center;gap:15px}
+button{border:0;padding:15px 27px;border-radius:50px;font-size:17px;font-weight:bold;cursor:pointer;transition:.25s}
+.yes{background:#ff3f79;color:#fff;box-shadow:0 8px 25px rgba(255,63,121,.4)}
+.yes:hover{transform:scale(1.08)}
+.no{background:#fff;color:#8b1746;position:relative}
+.heart-fall{position:fixed;top:-30px;pointer-events:none;animation:fall linear forwards;z-index:10}
+.hidden{display:none}
+.success h2{font-size:32px;margin-bottom:20px}
+.success p{font-size:19px;line-height:1.7;color:#ffe4ed}
+.big-heart{font-size:90px;animation:beat .9s infinite;margin-bottom:15px}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes show{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+@media(max-width:400px){h1{font-size:31px}.question{font-size:22px}.message{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card" id="mainCard">
+<div class="heart">❤️</div>
+<h1>Dilek...</h1>
+<div class="message">
+Belki bunu sana söylemek için en doğru zamanı bulamadım,
+ama artık içimde tutmak da istemiyorum.<br><br>
+Seninle konuştuğumda yüzümde oluşan gülümsemenin,
+seni düşündüğümde içimde oluşan o güzel heyecanın
+bir anlamı olduğunu biliyorum.<br><br>
+Hayatıma güzel bir tesadüf gibi girdin,
+ama bunun sadece bir tesadüf olarak kalmasını istemiyorum. 🥹❤️
+</div>
+<div class="question">Dilek, benimle çıkar mısın? ❤️</div>
+<div class="buttons">
+<button class="yes" onclick="yesClicked()">EVET ❤️</button>
+<button class="no" id="noBtn">Hayır 🙈</button>
+</div>
+</div>
+<div class="card success hidden" id="successCard">
+<div class="big-heart">💖</div>
+<h2>Gerçekten mi? 🥹❤️</h2>
+<p>
+O zaman artık bu hikâyenin güzel bir başlangıcı var. 🌹<br><br>
+Seninle güzel anılar biriktirmek, birlikte gülmek ve birbirimizi daha yakından tanımak istiyorum.<br><br>
+<strong>İyi ki “Evet” dedin Dilek. ❤️</strong>
+</p>
+</div>
+</div>
+<script>
+const noBtn=document.getElementById("noBtn");
+function moveNoButton(){
+const x=(Math.random()-.5)*220,y=(Math.random()-.5)*120;
+noBtn.style.transform=`translate(${x}px,${y}px)`;
+}
+noBtn.addEventListener("mouseover",moveNoButton);
+noBtn.addEventListener("touchstart",e=>{e.preventDefault();moveNoButton()});
+function yesClicked(){
+document.getElementById("mainCard").classList.add("hidden");
+document.getElementById("successCard").classList.remove("hidden");
+for(let i=0;i<70;i++)setTimeout(createHeart,i*35);
+}
+function createHeart(){
+const heart=document.createElement("div");
+heart.className="heart-fall";
+heart.textContent=["❤️","💖","💕","💗","💓","💘","💝"][Math.floor(Math.random()*7)];
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(2+Math.random()*3)+"s";
+heart.style.fontSize=(18+Math.random()*25)+"px";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),5000);
+}
+</script>
+</body>
+</html>
